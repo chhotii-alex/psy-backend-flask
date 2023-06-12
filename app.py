@@ -1,6 +1,7 @@
 import datetime
 
 from flask import Flask, request, make_response, json, abort
+from flask import send_from_directory
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import HTTPException
@@ -20,11 +21,6 @@ CORS(app)
 with app.app_context():
     db.create_all()
 
-
-@app.route('/')
-def hello():
-    print("Doing hello")
-    return "Hello, web!"
 
 @app.route('/checkToken', methods=['POST'])
 def check_token():
